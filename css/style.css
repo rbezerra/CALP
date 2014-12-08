@@ -1,0 +1,146 @@
+.content {
+  margin-top: 50px;
+  margin-left: 250px;
+}
+
+.navbar-right {
+  margin-top: 15px;
+  margin-right: 40px;
+}
+
+/* checkbox - each time slot */
+.time-slot               {  }
+
+/* hide the checkbox itself - the label will be styled */
+.time-slot input     { 
+  display:none; 
+}
+
+/* default styling for our labels */
+.time-slot label     { 
+  padding:10px 15px; 
+  color:#FFF; 
+  cursor:pointer; 
+  background:#EEE; 
+  border-radius:5px; 
+  transition:0.3s ease all;
+}
+
+/* if the label is checked */
+.time-slot input:checked ~ label { 
+  background:#f2dede; 
+  cursor:not-allowed;
+  animation:flashBooked 0.5s ease; 
+}
+
+/* if the label is not checked */
+.time-slot input:not(:checked) ~ label { 
+  background:#6AB074; 
+  animation:flashAvailable 0.5s ease; 
+}
+
+/* animation for the time slot to flash red */
+@keyframes flashBooked {
+  0%, 100%  { background:#f2dede; transform:scale(1); }
+  50%       { background:#F99090; transform:scale(1.5); }
+}
+
+/* animation for the time slot to flash green */
+@keyframes flashAvailable {
+  0%, 100%  { background:#6AB074; transform:scale(1); }
+  50%       { background:rgb(119, 218, 78); transform:scale(1.5); }
+}
+
+
+.p-set{
+    padding-top:120px;
+     line-height:30px;
+     color:#fff;
+     font-size:16px;
+}
+.hr-set {
+    border-top:1px solid rgba(0, 0, 0, 0)!important;
+    margin-bottom:20px;
+}
+.hr-set-two {
+    border-top:1px solid rgba(0, 0, 0, 0.05)!important;
+    margin-bottom:5px;
+}
+/* =============================================================
+   SIDE MENU STYLES
+ ============================================================ */
+
+#side-menu {
+    height:100%;
+    position:fixed;
+    top:-1000px;
+    left:-250px;
+    background-color:#2756C4;
+    color:#fff;
+    z-index:999;
+    overflow:auto;
+    max-width:250px;
+
+}
+#side-menu ul {
+        list-style:none;
+        padding:0px;
+}
+
+#side-menu ul li {
+        border-bottom:1px solid rgba(95, 87, 88, 0.2);
+        padding: 20px 25px;
+        display:inline-block;
+}
+#side-menu ul li a i {
+        padding-right:10px;
+}
+
+#side-menu ul li a,#side-menu ul li a:hover {
+        color:#fff;
+        text-decoration:none;
+        font-size: 16px;
+}
+  
+.logo-text {
+    padding: 20px 30px;
+    cursor: pointer;
+    font-size:20px;
+    font-weight:900;
+}
+
+.menu-close-icon {
+    padding:0px 10px;
+    cursor: pointer;
+    color:#000;
+    font-size:25px;
+  
+}
+.menu-open-icon {
+    cursor:pointer;
+    padding:20px 30px;
+    padding:20px 25px;
+    position:fixed;
+}
+.intro-txt {
+    padding:20px;
+}
+
+.panel-heading {
+    padding: 5px 15px;
+}
+
+.panel-footer {
+  padding: 1px 15px;
+  color: #A0A0A0;
+}
+
+.profile-img {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html data-ng-app="agendaApp" >
+<head>
+	<meta charset="UTF-8">
+	<title>Horários Laboratório 23</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body data-ng-controller="MainController">
+	<div id="main">
+		<div class="row">
+		    <div class="col-md-6">
+		       <h1><strong><i class="menu-open-icon fa fa-bars"></i></strong></h1>
+		    </div>
+		    <div class="col-md-3 navbar-right">
+		    	<div class="well">
+				    <div ng-if="currentUser">Bem-Vindo, {{ currentUser.name }}</div>
+					<div ng-if="isAuthorized(userRoles.admin)">Você está logado como ADMIN.</div>
+					<div ng-switch on="currentUser.role">
+					  <div ng-switch-when="userRoles.admin">Você está logado como ADMIN.</div>
+					  <div ng-switch-when="userRoles.editor">Você está logado como professor.</div>
+					  <div ng-switch-default>Você não está logado</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="side-menu" class="move-me" >
+	        <hr class="hr-set" />
+	        <span class="logo-text" >CALP   </span>  <i  class="menu-close-icon fa fa-bars"></i> 
+	        <hr class="hr-set-two" />
+
+	        <ul>
+	            <li>
+	             	<a href="#/" > <i class="fa fa-home"></i>    Home</a>
+	            </li>
+	            <li>
+	             	<a href="#/usuarios" >  <i class="fa fa-users"></i>  Usuários</a>
+	            </li>
+	            <li>
+	             	<a href="#/alunos" >  <i class="fa fa-graduation-cap"></i>  Alunos</a>
+	            </li>
+	            <li>
+	             	<a href="#/projetos" >  <i class="fa fa-area-chart"></i>  Projetos</a>
+	            </li>
+	            <li>
+	              	<a href="#/sobre" > <i class="fa fa-info-circle"></i>  Sobre</a>
+	            </li>
+	            <li>
+	            	<a href="#/login" data-ng-if="!logado"> <i class="fa fa-sign-in"></i>  Login</a>
+	            	<a href="#/logout" data-ng-if="logado"> <i class="fa fa-sign-out"></i>  Logout</a>
+	            </li>
+	        </ul> 
+
+       
+    	</div>
+
+		<div class="content" ng-view></div>
+		
+	</div>
+	
+
+
+
+
+
+	<!--JS -->
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>
