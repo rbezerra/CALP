@@ -227,12 +227,28 @@ angular.module('agendaApp', ['firebase','ngRoute'])
 			$scope.message = "FALTA IMPLEMENTAR"
 		})
 
-		.controller('AlunosController',  function($scope){
+		.controller('AlunosController',  function($scope, $firebase){
 			$scope.message = "FALTA IMPLEMENTAR"
+
+			var refAlunos = new Firebase("https://sweltering-inferno-5804.firebaseio.com/alunos");
+
+			var fbAlunos = $firebase(refAlunos);
+
+			var alunosSync = fbAlunos.$asObject();
+
+			alunosSync.$bindTo($scope, 'alunos');
 		})
 
-		.controller('ProjetosController',  function($scope){
+		.controller('ProjetosController',  function($scope, $firebase){
 			$scope.message = "FALTA IMPLEMENTAR"
+
+			var refProjetos = new Firebase("https://sweltering-inferno-5804.firebaseio.com/projetos");
+
+			var fbProjetos = $firebase(refProjetos);
+
+			var projetosSync = fbProjetos.$asObject();
+
+			projetosSync.$bindTo($scope, 'projetos');
 		})
 
 		.controller('LoginController',  function($scope, $rootScope, AUTH_EVENTS, AuthService){

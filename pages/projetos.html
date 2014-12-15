@@ -1,7 +1,141 @@
 <div class="container">
-	<div class="jumbotron text-center">
+	<!--div class="jumbotron text-center">
         <h1>Projetos</h1>
 
         <p>{{ message }}</p>
-    </div>
+    </div-->
+    <form class="form-horizontal">
+		<fieldset>
+
+			<!-- Form Name -->
+			<legend>Projetos</legend>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="nome">Nome</label>  
+			  <div class="col-md-5">
+			  <input id="nome" name="nome" placeholder="Nome" class="form-control input-md" type="text">
+			    
+			  </div>
+			</div>
+
+			<!-- Textarea -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="resumoProjeto">Resumo do Projeto</label>
+			  <div class="col-md-5">                     
+			    <textarea class="form-control" id="resumoProjeto" name="resumoProjeto"></textarea>
+			  </div>
+			</div>
+
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="professor">Professor</label>
+			  <div class="col-md-5">
+			    <select id="professor" name="professor" class="form-control">
+			    </select>
+			  </div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-10 text-center">
+					<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok-sign"></span> Salvar</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+<div class="container">
+		<legend>Lista de Projetos</legend>
+		<div class="table-responsive">
+			<table id="mytable" class="table table-bordered table-striped">
+				<tr>
+					<th width="50">Código</th>
+					<th>Nome</th>
+					<th>Resumo do Projeto</th>
+					<th>Professor</th>
+					<th>Editar</th>
+	                <th>Deletar</th>
+				</tr>
+
+				<tr>
+				    <td>1</td>
+				    <td>Desenvolvento Arduino</td>
+				    <td>Este Projeto tem como objetivo estimular o desenvolvimento na plataforma Arduino</td>
+				    <td>Mauro</td>
+				    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+				    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+			    </tr>
+				
+			</table>
+	</div>
+</div>
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title custom_align" id="Heading">Edição</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal">
+					<fieldset>
+						<!-- Text input-->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="nome">Nome</label>  
+							<div class="col-md-5">
+								<input id="nome" name="nome" placeholder="Nome" class="form-control input-md" type="text">
+							</div>
+						</div>
+
+						<!-- Textarea -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="resumoProjeto">Resumo do Projeto</label>
+							<div class="col-md-5">                     
+								<textarea class="form-control" id="resumoProjeto" name="resumoProjeto"></textarea>
+							</div>
+						</div>
+
+						<!-- Select Basic -->
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="professor">Professor</label>
+							<div class="col-md-5">
+								<select id="professor" name="professor" class="form-control">
+								</select>
+							</div>
+						</div>
+
+					</fieldset>
+				</form>
+			</div>
+			<div class="modal-footer ">
+				<button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Atualizar</button>
+			</div>
+		</div>
+	<!-- /.modal-content --> 
+	</div>
+<!-- /.modal-dialog --> 
+</div>
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title custom_align" id="Heading">Deletar</h4>
+			</div>
+			<div class="modal-body">
+				<div class="alert alert-warning">
+					<span class="glyphicon glyphicon-warning-sign"></span>Deseja realmente remover o registro selecionado?
+				</div>
+			</div>
+			<div class="modal-footer ">
+				<button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Sim</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Não</button>
+			</div>
+		</div>
+	<!-- /.modal-content --> 
+	</div>
+<!-- /.modal-dialog --> 
 </div>
