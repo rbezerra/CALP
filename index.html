@@ -1,81 +1,114 @@
-<!DOCTYPE html>
-<html data-ng-app="agendaApp" >
+<!doctype html>
+<html lang="en" ng-app="myApp">
 <head>
-	<meta charset="UTF-8">
-	<title>Horários Laboratório 23</title>
-	<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.0/journal/bootstrap.min.css">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Calp - Versão Beta</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+  <!-- <link rel="stylesheet" href="css/app.css"/> -->
+  <link rel="stylesheet" href="css/style.css"/>
 
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
-<body data-ng-controller="MainController">
-	<div id="main">
-		<div class="row">
-		    <div class="col-md-6">
-		       <h1><strong><i class="menu-open-icon fa fa-bars"></i></strong></h1>
-		    </div>
-		    <div class="col-md-3 navbar-right">
-		    	<div class="well">
-				    <div ng-if="currentUser">Bem-Vindo, {{ currentUser.name }}</div>
-					<div ng-if="isAuthorized(userRoles.admin)">Você está logado como ADMIN.</div>
-					<div ng-switch on="currentUser.role">
-					  <div ng-switch-when="userRoles.admin">Você está logado como ADMIN.</div>
-					  <div ng-switch-when="userRoles.editor">Você está logado como professor.</div>
-					  <div ng-switch-default>Você não está logado</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="side-menu" class="move-me" >
-	        <hr class="hr-set" />
-	        <span class="logo-text" >CALP   </span>  <i  class="menu-close-icon fa fa-bars"></i> 
-	        <hr class="hr-set-two" />
+<body ng-cloak data-ng-controller="MainController">
+  <div id="main">
+    <div class="row">
+        <div class="col-md-6">
+           <h1><strong><i class="menu-open-icon fa fa-bars"></i></strong></h1>
+        </div>
 
-	        <ul>
-	            <li>
-	             	<a href="#/" > <i class="fa fa-home"></i>    Home</a>
-	            </li>
-	            <li>
-	             	<a href="#/usuarios" >  <i class="fa fa-users"></i>  Usuários</a>
-	            </li>
-	            <li>
-	             	<a href="#/alunos" >  <i class="fa fa-graduation-cap"></i>  Alunos</a>
-	            </li>
-	            <li>
-	             	<a href="#/projetos" >  <i class="fa fa-area-chart"></i>  Projetos</a>
-	            </li>
-	            <li>
-	              	<a href="#/sobre" > <i class="fa fa-info-circle"></i>  Sobre</a>
-	            </li>
-	            <li>
-	            	<a href="#/login" data-ng-if="!logado"> <i class="fa fa-sign-in"></i>  Login</a>
-	            	<a href="#/logout" data-ng-if="logado"> <i class="fa fa-sign-out"></i>  Logout</a>
-	            </li>
-	        </ul> 
+        <div class="col-md-3 navbar-right">
+          <div class="well">
+            <div ng-show-auth>Bem-Vindo, {{ usuario.name }}</div>
+            <div ng-switch on="usuario.tipo">
+              <div ng-switch-when="ADMIN">Você está logado como ADMIN.</div>
+              <div ng-switch-when="PROF">Você está logado como professor.</div>
+              <div ng-switch-default>Você não está logado</div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div id="side-menu" class="move-me" >
+          <hr class="hr-set" />
+          <span class="logo-text" >CALP   </span>  <i  class="menu-close-icon fa fa-bars"></i> 
+          <hr class="hr-set-two" />
+
+          <ul>
+              <li>
+                <a href="#/" > <i class="fa fa-home"></i>    Home</a>
+              </li>
+              <li>
+                <a href="#/usuarios" >  <i class="fa fa-users"></i>  Usuários</a>
+              </li>
+              <li>
+                <a href="#/alunos" >  <i class="fa fa-graduation-cap"></i>  Alunos</a>
+              </li>
+              <li>
+                <a href="#/projetos" >  <i class="fa fa-area-chart"></i>  Projetos</a>
+              </li>
+              <li>
+                  <a href="#/sobre" > <i class="fa fa-info-circle"></i>  Sobre</a>
+              </li>
+              <li>
+                <a href="#/login" data-ng-if="!usuario"> <i class="fa fa-sign-in"></i>  Login</a>
+                <a href="#/login" ng-click="logout()" data-ng-if="usuario"> <i class="fa fa-sign-out"></i>  Logout</a>
+              </li>
+              <li><a href="#/home">home</a></li>
+              <li><a href="#/chat">chat</a></li>
+              <li ng-hide-auth><a href="#/logins">logins</a></li>
+              <li ng-show-auth><a href="#/account">account</a></li>
+          </ul> 
 
        
-    	</div>
+      </div>
 
-		<div class="content" ng-view></div>
-		
-	</div>
-	
+    <div class="content" ng-view></div>
+    
+  </div>
+
+  <!-- <ul class="menu">
+    <li><a href="#/home">home</a></li>
+    <li><a href="#/chat">chat</a></li>
+    <li ng-hide-auth><a href="#/login">login</a></li>
+    <li ng-show-auth><a href="#/account">account</a></li>
+  </ul> -->
+
+  <!-- <div ng-view></div> -->
+
+ 
+
+  <!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.x/angular.min.js"></script>
+<script src="//cdn.firebase.com/js/client/1.0.x/firebase.js"></script>
+<script src="//cdn.firebase.com/js/simple-login/1.6.x/firebase-simple-login.js"></script>
+<script src="//cdn.firebase.com/libs/angularfire/0.8.x/angularfire.min.js"></script>
+  -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
+  <script src="bower_components/angularfire/dist/angularfire.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  
 
 
-
-
-
-	<!--JS -->
-	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-	<script src="assets/js/jquery.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-    <script src="https://cdn.firebase.com/js/client/1.1.1/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/menu.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/decorators.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/firebase.utils.js"></script>
+  <script src="js/simpleLogin.js"></script>
+  <script src="js/changeEmail.js"></script>
 </body>
 </html>
